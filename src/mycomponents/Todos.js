@@ -10,7 +10,7 @@ export const Todos = ({todos, onDelete}) => {
       <h3 className="text-3xl font-bold text-center">Todos List</h3>
       <div className=" py-4">
         {todos.length === 0 ? (
-          <p className=" text-xl mx-9">The list is empty add the item</p>
+          <p className=" text-xl md:mx-9">The list is empty add the item</p>
         ) : (
           todos.map((todo,index) => {
             return (

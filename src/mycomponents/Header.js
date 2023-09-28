@@ -46,7 +46,7 @@ export default function Header(props) {
                 </li>
               </ul>
             ) : (
-              <form className="w-96" onSubmit={submit}>
+              <form className=" w-48 md:w-96" onSubmit={submit}>
                 <label
                   htmlFor="default-search"
                   className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

@@ -4,17 +4,12 @@ import { Todos } from "./mycomponents/Todos";
 import { About } from "./mycomponents/About";
 import { Footer } from "./mycomponents/Footer";
 import { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   let initTodo;
   if (localStorage.getItem("List") === null) {
-    initTodo = ''
+    initTodo = "";
   } else {
     initTodo = JSON.parse(localStorage.getItem("List"));
   }
@@ -31,8 +26,9 @@ function App() {
     let sno;
     if (listtodo.length === 0) {
       sno = 0;
-    } else sno = listtodo[listtodo.length - 1].sno + 1;
-
+    } else {
+      sno = listtodo[listtodo.length - 1].sno + 1;
+    }
     const myList = {
       sno: sno,
       title: title,
@@ -41,7 +37,7 @@ function App() {
     console.log(listtodo);
   };
 
-  const [listtodo, setTodos] = useState([initTodo]);
+  const [listtodo, setTodos] = useState(initTodo);
   useEffect(() => {
     localStorage.setItem("List", JSON.stringify(listtodo));
   }, [listtodo]);
@@ -51,24 +47,16 @@ function App() {
       <div>
         <Router>
           <Header title="My Todo List" searchbox={false} addTodo={addTodo} />
-        <Routes>
-          <Route exact path="/"  element={            <Todos todos={listtodo} onDelete={onDelete} />
-}/>
-           
-          
-          <Route exact path="/about"
-          element={ <About />}/>
-          
-          
-          
-          
-           
-         
-          
-        </Routes>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={<Todos todos={listtodo} onDelete={onDelete} />}
+            />
+            <Route exact path="/about" element={<About />} />
+          </Routes>
 
-
-        <Footer />
+          <Footer />
         </Router>
       </div>
     </>

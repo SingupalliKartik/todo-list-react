@@ -165,7 +165,7 @@ export default function Header(props) {
           </div>
         </div>
 
-        <Link className="xl:hidden flex mr-6 items-center" to="#">
+        <Link className="xl:hidden flex mr-6 items-center" to="/about">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 hover:text-gray-200"
@@ -185,7 +185,7 @@ export default function Header(props) {
             <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
           </span>
         </Link>
-        <Link className="navbar-burger self-center mr-12 xl:hidden" to="/about">
+        {/* <Link className="navbar-burger self-center mr-12 xl:hidden" to="/about">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 hover:text-gray-200"
@@ -200,7 +200,7 @@ export default function Header(props) {
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-        </Link>
+        </Link> */}
       </nav>
     </div>
   );

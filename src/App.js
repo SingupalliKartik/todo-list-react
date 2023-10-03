@@ -13,30 +13,40 @@ function App() {
   } else {
     initTodo = JSON.parse(localStorage.getItem("List"));
   }
+
   const onDelete = (todo) => {
     console.log("this is to be delete", todo);
-
+    
     setTodos(
       listtodo.filter((e) => {
         return e !== todo;
       })
     );
   };
+  
   const addTodo = (title) => {
-    let sno;
+    let snos;
     if (listtodo.length === 0) {
-      sno = 0;
+      snos = 0;
     } else {
-      sno = listtodo[listtodo.length - 1].sno + 1;
+      snos = listtodo[(listtodo.length) - 1].sno + 1;
     }
+
     const myList = {
-      sno: sno,
+      sno: snos,
       title: title,
     };
-    setTodos([...listtodo, myList]);
+    setTodos([myList,...listtodo ]);
     console.log(listtodo);
+    
   };
-
+const onUpdate=(todo, t)=>{
+ addTodo(t);
+ setTimeout(() => {
+  onDelete(todo)
+ }, 1000);
+ 
+}
   const [listtodo, setTodos] = useState(initTodo);
   useEffect(() => {
     localStorage.setItem("List", JSON.stringify(listtodo));
@@ -51,7 +61,7 @@ function App() {
             <Route
               exact
               path="/"
-              element={<Todos todos={listtodo} onDelete={onDelete} />}
+              element={<Todos todos={listtodo} onDelete={onDelete} update = {onUpdate}/>}
             />
             <Route exact path="/about" element={<About />} />
           </Routes>

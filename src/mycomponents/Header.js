@@ -1,4 +1,3 @@
-import { prototype } from "postcss/lib/previous-map";
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
@@ -22,7 +21,7 @@ export default function Header(props) {
             {props.title}
           </Link>
           <div className="mx-auto">
-            {props.searchbox == true ? (
+            {props.searchbox === true ? (
               <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
                 <li>
                   <Link className="hover:text-gray-200" to="#">

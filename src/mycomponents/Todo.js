@@ -22,7 +22,7 @@ export const Todo = ({ todo, onDelete, update, done, notdone }) => {
   return (
     <div className="  h-full  w-fit m-5   bg-blue-600 p-5  bg-opacity-20  rounded-lg flex flex-col  justify-start space-x-3 ">
       <div className="flex  flex-row-reverse justify-end">
-        <div className="text-2xl font-bold w-32 ">
+        <div className="text-2xl font-bold w-32  leading-10">
           <span className={style}>{todo.title}</span>
         </div>
         <div className="inline-flex ">
@@ -65,12 +65,12 @@ export const Todo = ({ todo, onDelete, update, done, notdone }) => {
         ) : (
           <>
             <div className="flex my-4 space-x-3">
-              {" "}
+            
               <button
                 onClick={() => {
                   tocheck(todo);
                 }}
-                className="group relative h-10  w-28 overflow-hidden rounded-lg bg-white text-lg shadow"
+                className="group relative h-10  w-28 overflow-hidden rounded-lg bg-white text-lg shadow hidden md:block"
               >
                 <div className="absolute inset-0 w-3 bg-green-600 transition-all duration-[450ms] ease-out group-hover:w-full"></div>
                 <span className="relative text-black group-hover:text-white">

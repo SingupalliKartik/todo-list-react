@@ -35,18 +35,46 @@ function App() {
     const myList = {
       sno: snos,
       title: title,
+      done: false,
     };
     setTodos([myList,...listtodo ]);
     console.log(listtodo);
     
   };
+  let k;
 const onUpdate=(todo, t)=>{
- addTodo(t);
- setTimeout(() => {
-  onDelete(todo)
- }, 1000);
+   k = listtodo.filter((e) => {
+    return e === todo;
+  })
+  console.log(k)
+  console.log(k[0])
+  k[0].title = t
+  console.log(k[0])
+  setTodos([...listtodo ]);
+  
  
 }
+
+
+const onDone = (todo)=>{
+  k = listtodo.filter((e) => {
+    return e === todo;
+  })
+  console.log(k)
+  console.log(k[0])
+  k[0].done = true
+  setTodos([...listtodo ]);
+}
+const notDone = (todo)=>{
+  k = listtodo.filter((e) => {
+    return e === todo;
+  })
+  console.log(k)
+  console.log(k[0])
+  k[0].done = false
+  setTodos([...listtodo ]);
+}
+
   const [listtodo, setTodos] = useState(initTodo);
   useEffect(() => {
     localStorage.setItem("List", JSON.stringify(listtodo));
@@ -61,7 +89,7 @@ const onUpdate=(todo, t)=>{
             <Route
               exact
               path="/"
-              element={<Todos todos={listtodo} onDelete={onDelete} update = {onUpdate}/>}
+              element={<Todos todos={listtodo} onDelete={onDelete} update = {onUpdate} done ={onDone} notdone={notDone}/>}
             />
             <Route exact path="/about" element={<About />} />
           </Routes>
